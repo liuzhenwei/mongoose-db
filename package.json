@@ -1,0 +1,20 @@
+{
+  "name": "mongoose-db",
+  "version": "1.0.0",
+  "description": "mongoose extension function",
+  "readme": "mongoose extension function",
+  "main": "index.js",
+  "keywords": [
+    "mongoose"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuzhenwei/connect-response-lzw.git"
+  },
+  "author": "liuzhenwei",
+  "dependencies": {
+    "mongoose": "^4.7.6",
+    "object-assign": "^4.1.0"
+  },
+  "license": "MIT"
+}
