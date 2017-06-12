@@ -43,7 +43,7 @@ module.exports = (function(){
 			}
 
 			Query = Query || Model.find(query);
-			Query.exec(callback);
+			return Query.exec(callback);
 		},
 
 		getById: function(id, callback){
@@ -59,7 +59,7 @@ module.exports = (function(){
 			return this.get({}, options, callback);
 		},
 
-		update: function(query, data, callback){
+		set: function(query, data, callback){
 			var Model = this.model;
 
 			callback = callback || function(){};
@@ -76,12 +76,12 @@ module.exports = (function(){
 						callback(null, result);
 					});
 				} else {
-					return callback({message: 'not found'}, null);
+					callback({message: 'not found'}, null);
 				}
 			});
 		},
 
-		updateById: function(id, data, callback){
+		setById: function(id, data, callback){
 			var Model = this.model;
 
 			callback = callback || function(){};
@@ -89,6 +89,46 @@ module.exports = (function(){
 			Model.findByIdAndUpdate(id, {$set: data}, (error, result) => {
 				if (error) return callback(error, null);
 				callback(null, objectAssign(result, data));
+			});
+		},
+
+		update: function(query, update, options, callback){
+			var Model = this.model;
+
+			callback = callback || function(){};
+			if( typeof(options) == 'function' ){
+				callback = options;
+				options = {};
+			}
+
+			Model.find(query, (error, result) => {
+				if (error) return callback(error, null);
+
+				if (result && result.length > 0) {
+					Model.update(query, update, options, (updateErr) => {
+						if (updateErr) return callback(updateErr, null);
+						
+						this.get({_id: result[0]._id}, callback);
+					});
+				} else {
+					callback({message: 'not found'}, null);
+				}
+			});
+		},
+
+		updateById: function(id, update, options, callback){
+			var Model = this.model;
+
+			callback = callback || function(){};
+			if( typeof(options) == 'function' ){
+				callback = options;
+				options = {};
+			}
+
+			Model.findByIdAndUpdate(id, update, options, (error, result) => {
+				if (error) return callback(error, null);
+				
+				this.get({_id: id}, callback);
 			});
 		},
 
