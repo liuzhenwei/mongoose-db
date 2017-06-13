@@ -1,6 +1,6 @@
 {
   "name": "mongoose-db",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "mongoose extension function",
   "readme": "mongoose extension function",
   "main": "index.js",
@@ -13,8 +13,7 @@
   },
   "author": "liuzhenwei",
   "dependencies": {
-    "mongoose": "^4.7.6",
-    "object-assign": "^4.1.0"
+    "mongoose": "^4.7.6"
   },
   "license": "MIT"
 }
