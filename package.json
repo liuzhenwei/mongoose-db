@@ -1,9 +1,8 @@
 {
   "name": "mongoose-db",
-  "version": "1.0.5",
-  "description": "mongoose extension function",
-  "readme": "mongoose extension function",
-  "main": "index.js",
+  "version": "1.0.6",
+  "description": "mongoose-ext-lzw",
+  "readme": "mongoose-ext-lzw",
   "keywords": [
     "mongoose"
   ],
@@ -12,8 +11,6 @@
     "url": "git+https://github.com/liuzhenwei/mongoose-db"
   },
   "author": "liuzhenwei",
-  "dependencies": {
-    "mongoose": "^4.7.6"
-  },
+  "dependencies": {},
   "license": "MIT"
 }
